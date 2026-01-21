@@ -1,30 +1,130 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
-/* You can override the default Infima variables here. */
+/* Space Docs Theme - Deep Dark Mode */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Default to Dark Mode colors even in Light Mode (forced consistency for Space theme) */
+  --ifm-color-primary: #3b82f6; /* Electric Blue Accent */
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #bfdbfe;
+  
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  /* Font Family - Technical/Clean */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Force Dark Theme Variables */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --ifm-background-color: #0b0c0f; /* Deep Space Black */
+  --ifm-background-surface-color: #131418; /* Slightly lighter for sidebars */
+  --ifm-card-background-color: #16181c; /* Card Background */
+  
+  --ifm-color-emphasis-100: #1a1b20;
+  --ifm-color-emphasis-200: #262831; /* Borders */
+  --ifm-color-emphasis-300: #4b5563;
+  --ifm-color-emphasis-600: #9ca3af;
+  --ifm-color-emphasis-700: #d1d5db; /* Text */
+  --ifm-color-emphasis-900: #f9fafb; /* Headings */
+  
+  --ifm-navbar-background-color: #0b0c0f; /* Seamless Header */
+  --ifm-footer-background-color: #000000;
+}
+
+/* Global Overrides for that "Space" feel */
+body {
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* Remove standard shadow, add borders instead (The Linear/Space look) */
+.navbar {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  box-shadow: none;
+}
+
+.footer {
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Button overrides */
+.button--secondary {
+  background: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  color: #fff;
+}
+.button--secondary:hover {
+  border-color: var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+}
+
+/* 1. Add "Breathing Room" between Sidebars and Content */
+[class^='docMainContainer'] .container {
+  padding-left: 4rem !important;  /* Push content away from Left Sidebar */
+  padding-right: 4rem !important; /* Push content away from Right TOC */
+}
+
+/* 2. Constrain the text width to match the "Space Docs" readability */
+/* This prevents the text from stretching too wide on large monitors */
+.markdown {
+  max-width: 55rem; /* Approx 880px - similar to the reference */
+}
+
+/* 3. Adjust the "On this page" (TOC) position */
+/* This ensures the right sidebar doesn't feel too close either */
+[class^='docItemCol'] {
+  max-width: 100% !important;
+}
+
+/* Mobile Responsiveness: Reset padding on smaller screens */
+@media (max-width: 996px) {
+  [class^='docMainContainer'] .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* --- 4. RIGHT SIDEBAR (Table of Contents / "Tab Tab") --- */
+/* Gives the Right TOC more breathing room and the "Space" look */
+.table-of-contents {
+  padding-left: 2rem !important; /* Push TOC text away from main content */
+  font-size: 0.9rem;
+  border-left: 1px solid var(--ifm-color-emphasis-200); /* Subtle border line */
+}
+
+.table-of-contents__link {
+  padding-top: 0.5rem;    /* Spacing between links */
+  padding-bottom: 0.5rem;
+  color: var(--ifm-color-emphasis-600); /* Muted text color */
+}
+
+.table-of-contents__link--active {
+  color: var(--ifm-color-primary) !important;
+  border-left: 3px solid var(--ifm-color-primary); /* Highlight indicator */
+  padding-left: 1rem; /* Indent active item */
+  margin-left: -1px; /* Align border */
+}
+
+
+/* --- 5. LEFT SIDEBAR (Navigation) --- */
+/* Matches the "Space" clean navigation style */
+aside[class^='theme-doc-sidebar-container'] {
+  border-right: 1px solid var(--ifm-color-emphasis-200); /* Subtle divider */
+  background-color: var(--ifm-background-surface-color); /* Slightly different shade */
+}
+
+/* Individual Menu Items */
+.menu__link {
+  padding: 0.75rem 1rem; /* Taller click area for easy navigation */
+  border-radius: 6px;      /* Sharper, modern corners */
+  margin-bottom: 0.25rem;  /* Space between items */
+}
+
+/* Active Menu Item styling */
+.menu__link--active {
+  background-color: rgba(59, 130, 246, 0.1); /* Subtle blue bg */
+  color: var(--ifm-color-primary);
+  font-weight: 600;
 }

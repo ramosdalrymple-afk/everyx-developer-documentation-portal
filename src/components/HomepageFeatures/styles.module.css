@@ -1,11 +1,108 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 4rem 0;
   width: 100%;
+  background-color: var(--ifm-background-color);
 }
 
-.featureSvg {
-  height: 200px;
-  width: 200px;
+/* Header Text Styling */
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.sectionSubtitle {
+  text-align: center;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 4rem;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid Layout matching docs.into.space */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* The "Space" Card */
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  height: 100%;
+  
+  background-color: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px; /* Slightly sharper corners */
+  
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Hover Effect: Glow Border + Lift */
+.featureCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15); /* Subtle Blue Glow */
+  background-color: #1a1c22;
+}
+
+.featureHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.featureIcon {
+  font-size: 1.5rem;
+  /* Optional: Add a subtle background circle behind icon */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.featureTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.featureDescription {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  flex-grow: 1; /* Pushes footer down */
+  margin-bottom: 1.5rem;
+}
+
+.featureFooter {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+.arrow {
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.featureCard:hover .arrow {
+  transform: translateX(4px);
 }

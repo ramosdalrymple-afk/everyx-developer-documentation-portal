@@ -1,58 +1,76 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: string;
   description: ReactNode;
+  link: string;
 };
 
+// Content mapped to EveryX Project Requirements
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Core Concepts',
+    icon: '🧠',
+    link: '/docs/core-concepts', // Ensure this folder exists in /docs/
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Deep dive into Crowd-Priced Pools, Liquidity Logic, and how EveryX 
+        differs from traditional order books.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Trading Guide',
+    icon: '📈',
+    link: '/docs/trading-guide',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Learn to place trades, manage positions with Stop-Loss, and use 
+        leverage effectively on the platform.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'Platform Mechanics',
+    icon: '⚙️',
+    link: '/docs/platform-mechanics',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Technical breakdown of Event Lifecycles (Upcoming → Resolution) 
+        and settlement fees.
+      </>
+    ),
+  },
+  {
+    title: 'Developer API',
+    icon: '🔌',
+    link: '/docs/api',
+    description: (
+      <>
+        Integrate directly with the EveryX settlement layer. 
+        Reference for contracts and endpoints.
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, icon, description, link}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+    <Link to={link} className={styles.featureCard}>
+      <div className={styles.featureHeader}>
+        <span className={styles.featureIcon}>{icon}</span>
+        <Heading as="h3" className={styles.featureTitle}>{title}</Heading>
       </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+      <p className={styles.featureDescription}>{description}</p>
+      <div className={styles.featureFooter}>
+        Read Guide <span className={styles.arrow}>&rarr;</span>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -60,7 +78,13 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <Heading as="h2" className={styles.sectionTitle}>
+          Developer Resources
+        </Heading>
+        <p className={styles.sectionSubtitle}>
+          Everything you need to build and trade on EveryX.
+        </p>
+        <div className={styles.featureGrid}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

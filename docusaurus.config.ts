@@ -5,31 +5,26 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'EveryX Docs', // Updated Project Name
+  tagline: 'The Central Knowledge Base for EveryX Prediction Markets',
   favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  // Future flags
   future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    v4: true,
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
+  url: 'https://docs.everyx.io', // Placeholder based on your brief
   baseUrl: '/',
 
   // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'EveryX', 
+  projectName: 'everyx-docs', 
 
   onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -41,10 +36,9 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          // Updated edit URL placeholder
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/EveryX/everyx-docs/tree/main/',
         },
         blog: {
           showReadingTime: true,
@@ -52,11 +46,8 @@ const config: Config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
+            'https://github.com/EveryX/everyx-docs/tree/main/',
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -71,25 +62,30 @@ const config: Config = {
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
+    
+    // CONFIG UPDATE: Force Dark Mode for the "Space" aesthetic
     colorMode: {
-      respectPrefersColorScheme: true,
+      defaultMode: 'dark',
+      disableSwitch: false, // Set to true if you want to lock it to dark mode only
+      respectPrefersColorScheme: false,
     },
+    
     navbar: {
-      title: 'My Site',
+      title: 'EveryX',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'EveryX Logo',
         src: 'img/logo.svg',
       },
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'tutorialSidebar', // Matches the ID in sidebars.ts
           position: 'left',
-          label: 'Tutorial',
+          label: 'Documentation', // Renamed from 'Tutorial' to match your project
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/EveryX',
           label: 'GitHub',
           position: 'right',
         },
@@ -99,11 +95,19 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
+          title: 'Resources',
           items: [
             {
-              label: 'Introduction',
-              to: '/docs/intro/what-is-everyx',
+              label: 'Core Concepts',
+              to: '/docs/core-concepts', // Matches your new file structure
+            },
+            {
+              label: 'Trading Guide',
+              to: '/docs/trading-guide',
+            },
+            {
+              label: 'Platform Mechanics',
+              to: '/docs/platform-mechanics',
             },
           ],
         },
@@ -111,16 +115,12 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
               label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              href: 'https://discordapp.com/invite/docusaurus', // Update with EveryX Discord
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'X (Twitter)',
+              href: 'https://x.com/docusaurus', // Update with EveryX Twitter
             },
           ],
         },
@@ -133,12 +133,12 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              href: 'https://github.com/EveryX',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} EveryX. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,
